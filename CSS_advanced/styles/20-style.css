@@ -53,7 +53,7 @@
   box-sizing: border-box;
 }
 
-.row:after {
+.row::after {
   content: "";
   display: table;
   clear: both;
