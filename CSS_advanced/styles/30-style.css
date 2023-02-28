@@ -274,7 +274,7 @@ h6 {
   right: -0.1rem;
   z-index: 1;
 }
-.card-inner:hover {
+.card-work:hover .card-inner {
   background-color: rgba(0, 0, 0, 0.7);
 }
 .card-work .card-title {
