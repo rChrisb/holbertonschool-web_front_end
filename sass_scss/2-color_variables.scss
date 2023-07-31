@@ -1,0 +1,14 @@
+/*colors*/
+
+$color-dark-grey: #3d3d3d;
+$color-light-grey: #6d6d6d;
+body {
+  color: $color-dark-grey;
+  background-color: $color-light-grey;
+}
+p {
+  color: $color-dark-grey;
+}
+h2 {
+  background-color: $color-light-grey;
+}
