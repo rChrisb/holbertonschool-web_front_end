@@ -246,19 +246,28 @@
                 <DIV class="form-group col-1-2">
                   <LABEL for="your-first-name">First Name</LABEL>
                   <DIV class="form-field">
-                    <SPAN class="form-field-container"></SPAN>
+                    <SPAN class="form-field-container">
+                      <INPUT type="text" name="your-first-name" id="your-first-name" placeholder="e.g. Mike" pattern="[A-Za-zÀ-ž\s]{3,}" maxlength="35"
+                      autocomplete="on" accesskey="f" required>
+                    </SPAN>
                   </DIV>
                 </DIV>
                 <DIV class="form-group col-1-2">
                   <LABEL for="your-last-name">Last Name</LABEL>
                   <DIV class="form-field">
-                    <SPAN class="form-field-container"></SPAN>
+                    <SPAN class="form-field-container">
+                      <INPUT type="text" name="your-last-name" id="your-last-name" placeholder="e.g. Smith" pattern="[A-Za-zÀ-ž\s]{3,}" maxlength="40"
+                      autocomplete="on" accesskey="l" required>
+                    </SPAN>
                   </DIV>
                 </DIV>
                 <DIV class="form-group col-2-3">
                   <LABEL for="your-email">Email</LABEL>
                   <DIV class="form-field">
-                    <SPAN class="form-field-container"></SPAN>
+                    <SPAN class="form-field-container">
+                      <INPUT type="email" name="your-email" id="your-email" placeholder="e.g. youremail@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="55"
+                      autocomplete="on" accesskey="e" required>
+                    </SPAN>
                   </DIV>
                 </DIV>
 
@@ -268,12 +277,19 @@
                 <DIV class="form-group col-2-3">
                   <LABEL for="your-title">Title</LABEL>
                   <DIV class="form-field">
-                    <SPAN class="form-field-container"></SPAN>
+                    <SPAN class="form-field-container">
+                      <INPUT type="text" name="your-title" id="your-title" placeholder="e.g. I loved that article" pattern="[A-Za-zÀ-ž\s]{4,}" maxlength="75"
+                      autocomplete="on" accesskey="t" required>
+                    </SPAN>
                   </DIV>
                 </DIV>
                 <DIV class="form-group col-2-3">
                   <LABEL for="your-comment">Comment</LABEL>
-                  <DIV class="form-field"><SPAN class="form-field-container"></SPAN></DIV>
+                  <DIV class="form-field">
+                    <SPAN class="form-field-container">
+                      <textarea name="your-comment" id="your-comment" placeholder="Write your comment here" pattern="[A-Za-zÀ-ž\s]{4,}" minlength="10"
+                       accesskey="c" required rows="6" cols="30">
+                  </SPAN></DIV>
                 </DIV>
                 <DIV class="form-group">
                   <BUTTON class="button button-primary">Post my comment</BUTTON>
