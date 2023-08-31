@@ -11,15 +11,16 @@ function isPrime(number) {
     return false;
   }
 }
-const startTime = performance.now();
 const countPrimeNumbers = function () {
   let count = 0;
   for (let i = 2; i < 101; i++) {
     if (isPrime(i)) count += 1;
   }
   console.log(count);
+  return count;
 };
 
+const startTime = performance.now();
 countPrimeNumbers();
 const endTime = performance.now();
 const elapsedTime = endTime - startTime;
