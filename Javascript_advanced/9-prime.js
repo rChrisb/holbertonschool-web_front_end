@@ -16,7 +16,6 @@ const countPrimeNumbers = function () {
   for (let i = 2; i < 101; i++) {
     if (isPrime(i)) count += 1;
   }
-  console.log(count);
   return count;
 };
 
