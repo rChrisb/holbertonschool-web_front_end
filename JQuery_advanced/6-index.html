@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  </head>
+  <body>
+    <script type="application/javascript">
+      function createFamilyTree() {
+        var table = $("<table>");
+        var thead = $("<thead>");
+        var headRow = $("<tr>");
+        headRow.append($("<th>").text("Firstname"));
+        headRow.append($("<th>").text("Lastname"));
+        thead.append(headRow);
+
+        var tbody = $("<tbody>");
+
+        $("body").append(table.append(thead, tbody));
+      }
+
+      function addNewMember(firstName, lastName, position) {
+        var newRow = $("<tr>");
+        newRow.append($("<td>").text(firstName));
+        newRow.append($("<td>").text(lastName));
+
+        var deleteCell = $("<td>").text("(x)");
+        deleteCell.css("background-color", "orange");
+        deleteCell.click(function () {
+          newRow.remove();
+        });
+        newRow.append(deleteCell);
+
+        if (position === "before") {
+          $("tbody").prepend(newRow);
+        } else {
+          $("tbody").append(newRow);
+        }
+      }
+
+      function createForm() {
+        var input1 = $("<input>").attr("type", "text");
+        var input2 = $("<input>").attr("type", "text");
+
+        var select = $("<select>");
+        select.append($("<option>").attr("value", "before").text("Before"));
+        select.append($("<option>").attr("value", "after").text("After"));
+
+        var submit = $("<input>").attr("type", "submit").val("Submit");
+
+        var form = $("<form>");
+        form.append(input1, input2, select, submit);
+
+        form.submit(function (e) {
+          e.preventDefault();
+          var firstName = input1.val();
+          var lastName = input2.val();
+          var position = select.val();
+          addNewMember(firstName, lastName, position);
+        });
+
+        $("table").before(form);
+      }
+
+      createFamilyTree();
+
+      createForm();
+    </script>
+  </body>
+</html>
