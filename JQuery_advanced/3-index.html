@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+    <!-- Load jQuery from the CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  </head>
+  <body>
+    <script type="application/javascript">
+      // Define the createFamilyTree function
+      function createFamilyTree() {
+        // Create a table element
+        var table = $("<table>");
+        // Create the table head
+        var tableHead = $("<thead>");
+        var headRow = $("<tr>");
+        headRow.append($("<th>").text("Firstname"));
+        headRow.append($("<th>").text("Lastname"));
+        tableHead.append(headRow);
+
+        var tableBody = $("<tbody>");
+
+        var row1 = $("<tr>");
+        row1.append($("<td>").text("Guillaume"));
+        row1.append($("<td>").text("Salva"));
+        tableBody.append(row1);
+
+        var row2 = $("<tr>");
+        row2.append($("<td>").text("Paulette"));
+        row2.append($("<td>").text("Salva"));
+        tableBody.append(row2);
+
+        var row3 = $("<tr>");
+        row3.append($("<td>").text("Antoine"));
+        row3.append($("<td>").text("Salva"));
+        tableBody.append(row3);
+
+        $("body").append(table.append(tableHead, tableBody));
+      }
+
+      createFamilyTree();
+    </script>
+  </body>
+</html>
