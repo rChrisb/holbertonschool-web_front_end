@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <script type="application/javascript">
+      function addPostRow(data) {
+        var paragraph = $("<p>").html(
+          "<span>Post created with id " +
+            data.id +
+            ", title: " +
+            data.title +
+            ", author: " +
+            data.author +
+            "</span>"
+        );
+
+        $("body").append(paragraph);
+      }
+
+      function listPosts() {
+        $.get("http://localhost:3000/posts", function (data, status) {
+          if (status === "success") {
+            data.forEach(function (post) {
+              addPostRow(post);
+            });
+          } else {
+            alert("Server Error");
+          }
+        });
+      }
+
+      function buildForm() {
+        var form = $("<form>");
+
+        var authorDiv = $("<div>");
+        authorDiv.append($("<label>").attr("for", "author").text("Author"));
+        authorDiv.append(
+          $("<input>").attr({ type: "text", id: "author", name: "author" })
+        );
+
+        var titleDiv = $("<div>");
+        titleDiv.append($("<label>").attr("for", "title").text("Title"));
+        titleDiv.append($("<textarea>").attr({ id: "title", name: "title" }));
+
+        form.append(authorDiv, titleDiv, $("<input>").attr("type", "submit"));
+
+        $("body").append(form);
+
+        $("label[for='author']").click(function () {
+          $("input#author").select();
+        });
+
+        $("input#author").keypress(function (e) {
+          if (e.which === 13) {
+            $("form").submit();
+            return false;
+          }
+        });
+
+        $("form").submit(function (e) {
+          e.preventDefault();
+          sendForm();
+        });
+      }
+
+      function sendForm() {
+        $("form").after("About to send the query to the API");
+
+        var data = {
+          title: $("textarea#title").val(),
+          author: $("input#author").val(),
+        };
+
+        $.post(
+          "http://localhost:3000/posts",
+          data,
+          function (response, status) {
+            if (status === "success") {
+              addPostRow(response);
+              $("form").after("Query sent successfully!");
+            } else {
+              alert("Error sending the POST query");
+            }
+          }
+        );
+      }
+
+      // Call the functions listPosts and buildForm when the page loads
+      $(document).ready(function () {
+        listPosts();
+        buildForm();
+      });
+    </script>
+  </body>
+</html>
