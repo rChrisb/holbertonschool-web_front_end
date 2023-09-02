@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <script type="application/javascript">
+      function addPostRow(data) {
+        var paragraph = $("<p>").attr("id", "row-" + data.id);
+
+        var deleteButton = $("<span>")
+          .text("(delete)")
+          .css({ cursor: "pointer", color: "red" })
+          .click(function () {
+            deletePost(data.id);
+          });
+
+        paragraph.append(deleteButton);
+
+        paragraph.append(
+          $("<span>").html(
+            "Post created with id " +
+              data.id +
+              ", title: " +
+              data.title +
+              ", author: " +
+              data.author
+          )
+        );
+
+        $("body").append(paragraph);
+      }
+
+      function listPosts() {
+        $.get("http://localhost:3000/posts", function (data, status) {
+          if (status === "success") {
+            data.forEach(function (post) {
+              addPostRow(post);
+            });
+          } else {
+            alert("Server Error");
+          }
+        });
+      }
+
+      function deletePost(id) {
+        $.ajax({
+          url: "http://localhost:3000/posts/" + id,
+          type: "DELETE",
+          success: function (response, status) {
+            if (status === "success") {
+              $("#row-" + id).remove();
+            } else {
+              alert("Post was not deleted");
+            }
+          },
+          error: function () {
+            alert("Post was not deleted");
+          },
+        });
+      }
+
+      $(document).ready(function () {
+        listPosts();
+        buildForm();
+      });
+    </script>
+  </body>
+</html>
